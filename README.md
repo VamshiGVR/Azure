@@ -5,7 +5,7 @@
 ## CONTAINS
 
 1) Azure Policy.
-2) Azure DevOps Pipeline
+2) Azure DevOps Pipeline.
 
 ## Extensions Installed for VSCODE
 
