@@ -1,0 +1,32 @@
+name: Deploy Azure Policy
+
+on: 
+  push: 
+    branches: [main]
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}
+
+    - name: Create/Update Policy Definations
+      run : | 
+        az policy defination create \
+          --name "deny-public-ip" \
+          --rules .AZURE_POLICY\Definitions\policyDefinitions\tags-Add-to-resources.jsonc \
+          --mode All
+
+    - name: Assign Policy
+      run: |
+        az policy assignment create \
+          --name "deny-public-ip-assignment" \
+          --policy "deny-public-ip" \
+          --scope "/subscriptions/<sub-id>/resourceGroups/<rg-name>"
