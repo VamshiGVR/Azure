@@ -1,5 +1,5 @@
 # Azure
-## https://learn.microsoft.com/en-us/azure/?product=popular
+## https://learn.microsoft.com/en-us/azure
 -> This Repo is used to learn Azure Cloud.
 
 ## CONTAINS
