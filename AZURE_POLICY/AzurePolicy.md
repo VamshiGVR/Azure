@@ -10,13 +10,15 @@ This repository contains Azure Policy definations and assignments.
 
 azure-policy/
 │
-├── policies/
-│   └── deny-public-ip/
-│       ├── policy-definition.json
-│       └── parameters.json
+├── policies/                   # Root folder for policy resources
+│   └── policy1/
+│       ├── policy.json         # Policy Defination
+        ├── parameters.json     # Policy defination of parameters
+│       └── rules.json          # Policy rule
 │
 ├── assignments/
-│   └── deny-public-ip-assignment.json
+│   |── policy1assign.json      # Assign for the policy1
+    └── exemption.json          # Exemption for assignment
 │
 └── workflows/
     └── deploy-policy.yml
