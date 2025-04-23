@@ -1,0 +1,54 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+    "name": "require-a-tag-resource-group",
+    "properties": {
+        "displayName": "Require a tag on resource groups",
+        "policyType": "BuiltIn",
+        "mode": "Indexed",
+        "description": "This policy requires that a specific tag is applied to all resource groups. This policy is useful for ensuring that all resource groups have the same tags applied, which can help with cost management and organization.",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Tags"
+        },
+        "parameters":{
+            "effect":{
+                "type":"String",
+                "metadata":{
+                    "displayName":"Effect",
+                    "description":"Enable or disable the policy. The default value is 'audit'."
+                },
+                "allowedValues":[
+                    "audit",
+                    "deny",
+                    "disabled"
+                ],
+                "defaultValue":"audit"
+            },
+            "YourParameter":{
+                "type":"String",
+                "metadata":{
+                    "displayName":"YourParameter",
+                    "description":"The name of the tag that is required on all resource groups."
+                },
+                "defaultValue":"YourDefaultValue"
+            },
+            "policyRule":{
+                "if":{
+                    "allOf": [
+                      {
+                        "field": "type",
+                        "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                      },
+                      {
+                        "field": "[concat('tags[', parameters('tagName'), ']')]",
+                        "exists": "false"
+                      }
+                    ]
+                  },
+                "then":{
+                    "effect":"deny"
+                }
+            }
+        }
+    }
+}
