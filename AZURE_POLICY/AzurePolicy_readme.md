@@ -22,3 +22,11 @@ azure-policy/
 │
 └── workflows/
     └── deploy-policy.yml
+
+## Workflow
+
+![alt text](image.png)
+
+## schema
+
+<https://azure.github.io/enterprise-azure-policy-as-code/#who-should-use-epac>
