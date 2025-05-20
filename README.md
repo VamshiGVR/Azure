@@ -2,6 +2,8 @@
 
 [Azure Documentation](https://learn.microsoft.com/en-us/azure) - Official Microsoft Azure Documentation.
 
+PACKAGE: https://azure.github.io/enterprise-azure-policy-as-code/
+
 -> This Repo is used to learn Azure Cloud.
 
 ## CONTAINS
