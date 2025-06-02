@@ -1,0 +1,32 @@
+
+name: Deploy to Artifact Registry
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create/Update Artifact Registry
+      run: |
+        az artifact registry create \
+          --name "my-artifact-registry" \
+          --location "eastus" \
+          --resource-group "my-resource-group"
+
+    - name: Upload Artifact
+      run: |
+        az artifact registry upload \
+          --name "my-artifact" \
+          --path "./path/to/artifact" \
+          --registry "my-artifact-registry"
