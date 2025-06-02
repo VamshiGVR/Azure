@@ -20,6 +20,3 @@ PACKAGE: https://azure.github.io/enterprise-azure-policy-as-code/
 4) Azure Functions
 5) Azure Databases
 6) Azure Databricks
-
-### TEST
-- [ ] for an unchecked box or - [x] for a checked one.
